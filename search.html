@@ -1,0 +1,46 @@
+<template name="searchPosts">
+
+    {{#contentFor "headerButtonLeft"}}
+        {{>ionNavBackButton class="button-positive"}} 
+    {{/contentFor}}
+
+    {{#contentFor "headerTitle"}}
+        <h1 class="title"> Search items </h1>
+    {{/contentFor}}
+
+
+    {{#ionView}}
+        {{#ionContent}}
+
+            {{> esInput index=indexes placeholder=" Search.." }}  
+
+            {{#ifEsIsSearching index=indexes}}
+
+            	<div>Loading...</div>
+
+                {{else}}
+
+                    {{#ionList}}
+            	        {{#esEach index="posts"}}
+            	            {{> postItem}}
+            	        {{/esEach}}
+
+                        {{#esEach index="comments"}}
+                            {{> postItem}}
+                        {{/esEach}}
+
+                        {{> esLoadMoreButton index=indexes}}
+     
+                    {{/ionList}}
+
+        	{{/ifEsIsSearching}}
+
+
+            {{#ifEsHasNoResults index=indexes}}
+                <div class="no-results">No results found!</div>
+            {{/ifEsHasNoResults}}
+
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>
