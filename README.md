@@ -1,2 +1,4 @@
 # meteor-easysearch
-codes for the meteor easy-search package
+Extracted lines for implenting the Easy-Search package. 
+
+using MongoDB rather than Elastic Search forr now.
